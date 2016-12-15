@@ -6,16 +6,16 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 17:33:40 by pbondoer          #+#    #+#             */
-/*   Updated: 2015/12/02 19:44:59 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/16 00:48:30 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "string.h"
 
-size_t	ft_countwords(char *str, char sep)
+int		ft_countwords(char *str, char sep)
 {
-	size_t result;
-	size_t i;
+	int result;
+	int i;
 
 	i = 0;
 	result = 0;
