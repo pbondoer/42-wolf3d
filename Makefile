@@ -6,7 +6,7 @@
 #    By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/22 23:12:10 by pbondoer          #+#    #+#              #
-#    Updated: 2016/12/13 17:56:28 by pbondoer         ###   ########.fr        #
+#    Updated: 2016/12/16 00:50:39 by pbondoer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,9 @@ OBJDIR	= ./obj
 SRC		= main.c \
 		  window.c \
 		  image.c \
-		  mouse.c \
-		  keyboard.c
+		  keyboard.c \
+		  color.c \
+		  map.c
 
 OBJ		= $(addprefix $(OBJDIR)/,$(SRC:.c=.o))
 
@@ -69,11 +70,11 @@ $(NAME): $(OBJ)
 
 clean:
 	rm -rf $(OBJDIR)
-	make -C $(FT) clean
-	make -C $(MLX) clean
+	make -C $(FTDIR) clean
+	make -C $(MLXDIR) clean
 
 fclean: clean
 	rm $(NAME)
-	make -C $(FT) fclean
+	make -C $(FTDIR) fclean
 
 re: fclean all

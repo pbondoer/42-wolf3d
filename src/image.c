@@ -6,12 +6,12 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/19 04:21:40 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/13 18:24:31 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/16 00:44:40 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "fractol.h"
+#include "wolf.h"
 #include "mlx.h"
 
 void	image_set_pixel(t_image *image, int x, int y, int color)
