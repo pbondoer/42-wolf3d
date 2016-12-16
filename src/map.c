@@ -6,7 +6,7 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 21:49:22 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/16 00:57:29 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/16 01:05:40 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@
 static void		*cleanup(t_list *lst, t_map *m)
 {
 	t_list	*next;
-	int i = 0;
+	int		i;
 
+	i = 0;
 	while (lst)
 	{
 		next = lst->next;
@@ -99,7 +100,7 @@ static t_map	*new_map(int w, int h)
 		return (NULL);
 	m->width = w;
 	m->height = h;
-	if((m->values = (int **)ft_memalloc(sizeof(int *) * w)) == NULL)
+	if ((m->values = (int **)ft_memalloc(sizeof(int *) * w)) == NULL)
 	{
 		ft_memdel((void **)&m);
 		return (NULL);
@@ -119,13 +120,14 @@ static t_map	*new_map(int w, int h)
 	return (m);
 }
 
-t_map		*read_map(char *file)
+t_map			*read_map(char *file)
 {
 	t_list	*lst;
 	t_map	*map;
 	int		fd;
 
-	if ((fd = open(file, O_RDONLY)) == -1 || (lst = get_lines(fd)) == NULL)
+	if ((fd = open(file, O_RDONLY)) == -1 ||
+			(lst = get_lines(fd)) == NULL)
 		return (NULL);
 	map = new_map(ft_countwords((char *)lst->content, ' '), ft_lstcount(lst));
 	if (map == NULL || populate_map(map, lst) == NULL)
