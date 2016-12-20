@@ -6,19 +6,26 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/12 08:28:17 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/20 05:40:53 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/20 11:15:46 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "mlx.h"
 #include "wolf.h"
-#include <stdio.h>
+#include <stdlib.h>
 
 int		die(char *reason)
 {
 	ft_putendl(reason);
 	return (1);
+}
+
+int		hook_close(t_mlx *mlx)
+{
+	(void)mlx;
+	exit(EXIT_SUCCESS);
+	return (0);
 }
 
 int		main(int argc, char **argv)
@@ -38,8 +45,7 @@ int		main(int argc, char **argv)
 	init_player(&mlx->player);
 	render(mlx);
 	mlx_hook(mlx->window, 2, 1L << 0, hook_keydown, mlx);
-	//mlx_expose_hook(mlx->window, hook_expose, mlx);
-	//mlx_hook(mlx->window, 6, 1L << 6, hook_mousemove, mlx); // key hook!!
+	mlx_hook(mlx->window, 17, 1L << 0, hook_close, mlx);
 	mlx_loop(mlx->mlx);
 	return (0);
 }

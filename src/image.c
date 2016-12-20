@@ -6,7 +6,7 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/19 04:21:40 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/20 05:38:31 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/20 10:50:23 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	clear_image(t_image *image)
 {
 	ft_bzero(image->ptr, image->width * image->height * image->bpp);
 }
-
 
 t_color	get_pixel(t_image *image, int x, int y)
 {

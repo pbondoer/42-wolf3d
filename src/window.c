@@ -6,7 +6,7 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 05:33:42 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/20 05:20:37 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/20 11:10:25 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_mlx		*mlxdel(t_mlx *mlx)
 	return (NULL);
 }
 
-t_mlx		*init()
+t_mlx		*init(void)
 {
 	t_mlx	*mlx;
 

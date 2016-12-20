@@ -6,7 +6,7 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/12 08:35:18 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/20 10:11:19 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/20 13:01:31 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # define WIN_WIDTH 1280
 # define WIN_HEIGHT 720
 # define VIEW_DIST 10
-# define TEX_MAP_SIZE 16
-# define HI_RES 1
+# define TEX_MAP_SIZE 20
+# define HI_RES 0
 
 typedef struct		s_rgba
 {
@@ -59,16 +59,29 @@ typedef struct		s_vector
 	float		y;
 }					t_vector;
 
+typedef struct		s_cast
+{
+	int		mx;
+	int		my;
+	float	sx;
+	float	sy;
+	float	dx;
+	float	dy;
+	int		stepx;
+	int		stepy;
+	float	wall;
+}					t_cast;
+
 typedef struct		s_ray
 {
 	float		x;
 	float		y;
 	int			side;
-	float		distance;
+	float		dist;
 	float		light;
 	int			height;
 	t_image		*texture;
-	int			texX;
+	int			tex_x;
 	float		fx;
 	float		fy;
 }					t_ray;
