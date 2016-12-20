@@ -6,7 +6,7 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/16 01:21:04 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/20 06:50:15 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/20 08:31:19 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,20 @@ typedef struct	s_cast
 	float	dy;
 	int		stepx;
 	int		stepy;
+	float	wall;
 }				t_cast;
+
+void			castfloor(t_ray *r, t_cast *t)
+{
+	r->fx = (float)t->mx + (r->side ? t->wall : 0) + (!r->side && r->x < 0 ? 1.0f : 0);
+	r->fy = (float)t->my + (r->side ? 0 : t->wall) + (r->side && r->y < 0 ? 1.0f : 0);
+}
 
 void			cast(t_ray *r, t_map *m, t_player *p, t_image *tex[])
 {
 	t_cast	t;
 	int		hit;
 	int		blockdist;
-	float	wallX;
 
 	t.mx = (int)p->x;
 	t.my = (int)p->y;
@@ -67,12 +73,13 @@ void			cast(t_ray *r, t_map *m, t_player *p, t_image *tex[])
 	{
 		r->distance = (r->side ? (t.my - p->y + (1 - t.stepy) / 2) / r->y :
 			(t.mx - p->x + (1 - t.stepx) / 2) / r->x);
-		r->height = (int)round(WIN_HEIGHT / r->distance);
+		r->height = (int)floor(WIN_HEIGHT / r->distance);
 		r->light = 1.0f * (1.0f - r->distance / VIEW_DIST) * (r->side ? 0.9 : 1.0f);
 		r->texture = tex[hit];
-		wallX = (r->side ? p->x + r->distance * r->x :
+		t.wall = (r->side ? p->x + r->distance * r->x :
 			p->y + r->distance * r->y);
-		wallX -= floor(wallX);
-		r->texpos = (int)(wallX * r->texture->width);
+		t.wall -= floor(t.wall);
+		r->texX = (int)(t.wall * r->texture->width);
+		castfloor(r, &t);
 	}
 }
