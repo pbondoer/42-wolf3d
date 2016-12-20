@@ -6,7 +6,7 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/16 01:08:58 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/20 14:07:16 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/20 14:14:37 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	place_player(t_player *p, t_map *m)
 void		init_player(t_player *p, t_map *m)
 {
 	place_player(p, m);
-	p->d.x = -1.0f;
+	p->d.x = 1.0f;
 	p->d.y = 0.0f;
 	p->p.x = 0.0f;
 	p->p.y = 2.0f / 3.0f;
