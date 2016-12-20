@@ -6,7 +6,7 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/12 08:28:17 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/20 13:11:34 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/20 14:02:38 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int			main(int argc, char **argv)
 	if ((map = read_map(argv[1], mlx->max_tex)) == NULL)
 		return (die("error: invalid map file"));
 	mlx->map = map;
-	init_player(&mlx->player);
+	init_player(&mlx->player, mlx->map);
 	render(mlx);
 	mlx_hook(mlx->window, 2, 1L << 0, hook_keydown, mlx);
 	mlx_hook(mlx->window, 17, 1L << 0, hook_close, mlx);

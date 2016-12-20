@@ -6,17 +6,44 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/16 01:08:58 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/20 07:07:24 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/20 14:07:16 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf.h"
+#include "libft.h"
 #include <math.h>
 
-void		init_player(t_player *p)
+static void	place_player(t_player *p, t_map *m)
 {
-	p->x = 3.5f;
-	p->y = 3.5f;
+	int	x;
+	int	y;
+	int	f;
+
+	y = 0;
+	f = 0;
+	while (y < m->height)
+	{
+		x = 0;
+		while (x < m->width)
+		{
+			if (!(f = get_tile(m, x, y)))
+				break ;
+			x++;
+		}
+		if (!f)
+			break ;
+		y++;
+	}
+	if (y == m->height && x == m->width)
+		ft_putendl("warning: map contains no empty space");
+	p->x = x + 0.5f;
+	p->y = y + 0.5f;
+}
+
+void		init_player(t_player *p, t_map *m)
+{
+	place_player(p, m);
 	p->d.x = -1.0f;
 	p->d.y = 0.0f;
 	p->p.x = 0.0f;

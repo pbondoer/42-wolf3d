@@ -6,7 +6,7 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/12 08:35:18 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/20 13:10:45 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/20 14:01:10 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ t_color				clerp(t_color c1, t_color c2, double p);
 ** Wolf3D functions
 */
 
-void				init_player(t_player *p);
+void				init_player(t_player *p, t_map *m);
 t_map				*read_map(char *fd, int max);
 int					get_tile(t_map *m, int x, int y);
 void				cast(t_ray *r, t_map *m, t_player *p, t_image *tex[]);
