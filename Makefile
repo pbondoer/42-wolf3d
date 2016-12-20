@@ -6,7 +6,7 @@
 #    By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/22 23:12:10 by pbondoer          #+#    #+#              #
-#    Updated: 2016/12/16 00:50:39 by pbondoer         ###   ########.fr        #
+#    Updated: 2016/12/20 05:39:23 by pbondoer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,13 @@ SRC		= main.c \
 		  image.c \
 		  keyboard.c \
 		  color.c \
-		  map.c
+		  xpm.c \
+		  player.c \
+		  reader.c \
+		  map.c \
+		  render.c \
+		  ray.c \
+		  texture.c
 
 OBJ		= $(addprefix $(OBJDIR)/,$(SRC:.c=.o))
 
@@ -74,7 +80,7 @@ clean:
 	make -C $(MLXDIR) clean
 
 fclean: clean
-	rm $(NAME)
+	rm -f $(NAME)
 	make -C $(FTDIR) fclean
 
 re: fclean all

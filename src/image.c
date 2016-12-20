@@ -6,7 +6,7 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/19 04:21:40 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/16 00:44:40 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/20 05:38:31 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,15 @@ void	image_set_pixel(t_image *image, int x, int y, int color)
 void	clear_image(t_image *image)
 {
 	ft_bzero(image->ptr, image->width * image->height * image->bpp);
+}
+
+
+t_color	get_pixel(t_image *image, int x, int y)
+{
+	if (x < 0 || y < 0 || x >= image->width || y >= image->height)
+		return ((t_color)0x0);
+	return ((t_color)*(int *)(image->ptr + ((x + y * image->width)
+			* image->bpp)));
 }
 
 t_image	*del_image(t_mlx *mlx, t_image *img)
@@ -45,7 +54,7 @@ t_image	*new_image(t_mlx *mlx, int w, int h)
 	if ((img->image = mlx_new_image(mlx->mlx, w, h)) == NULL)
 		return (del_image(mlx, img));
 	img->ptr = mlx_get_data_addr(img->image, &img->bpp, &img->stride,
-			&img->endian);
+		&img->endian);
 	img->bpp /= 8;
 	img->width = w;
 	img->height = h;

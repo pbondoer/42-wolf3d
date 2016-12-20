@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.c                                             :+:      :+:    :+:   */
+/*   xpm.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/12 10:44:47 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/15 21:25:01 by pbondoer         ###   ########.fr       */
+/*   Created: 2016/12/20 04:12:45 by pbondoer          #+#    #+#             */
+/*   Updated: 2016/12/20 04:34:38 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
-#include "libft.h"
 #include "mlx.h"
+#include "libft.h"
+#include "wolf.h"
 
-void		draw(t_mlx *mlx)
+t_image	*xpm_image(char *xpm, t_mlx *mlx)
 {
-	int x;
-	int y;
+	t_image		*img;
 
-	y = 0;
-	while (y < WIN_HEIGHT)
-	{
-		x = 0;
-		while (x < WIN_WIDTH)
-		{
-			image_set_pixel(mlx->image, x, y,
-					get_color(*(mlx->data + y * WIN_WIDTH + x), mlx));
-			x++;
-		}
-		y++;
-	}
-	mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->image->image, 0, 0);
+	if ((img = ft_memalloc(sizeof(t_image))) == NULL)
+		return (NULL);
+	if ((img->image = mlx_xpm_file_to_image(mlx->mlx, xpm, &img->width,
+			&img->height)) == NULL)
+		return (del_image(mlx, img));
+	img->ptr = mlx_get_data_addr(img->image, &img->bpp, &img->stride,
+		&img->endian);
+	img->bpp /= 8;
+	return (img);
 }
