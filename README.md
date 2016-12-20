@@ -17,12 +17,13 @@ map using the arrow keys. Exit by closing the window or pressing ESC.
 ## Map file format
 It's a very simple format. Open a file in your favorite text editor, make sure
 you have a grid of integers (each one being it's block ID), and it should work
-right out of the box. You can specify a spawn position with `x`.
+right out of the box. Spawn position is the first empty space available from the
+top left.
 
 ```
 1 1 1 1 1
 1 0 2 0 1
-1 0 x 0 1
+1 0 0 0 1
 1 1 1 1 1
 ```
 
