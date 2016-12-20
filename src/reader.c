@@ -6,7 +6,7 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 21:49:22 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/20 13:49:44 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/20 16:10:05 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "libft.h"
 #include "wolf.h"
 #include <fcntl.h>
+#include <stdio.h>
 
 static void		*cleanup(t_list *lst, t_map *m)
 {
@@ -83,8 +84,8 @@ static t_map	*populate_map(t_map *m, t_list *list, int max)
 			return (cleanup(list, m));
 		while (x < m->width)
 		{
-			if ((m->values[x][y] = ft_atoi(split[x])) < 0 ||
-					m->values[x][y] > max)
+			if ((m->values[y][x] = ft_atoi(split[x])) < 0 ||
+					m->values[y][x] > max)
 				return (NULL);
 			x++;
 		}
@@ -137,7 +138,8 @@ t_map			*read_map(char *file, int max)
 	map = new_map(ft_countwords((char *)lst->content, ' '), ft_lstcount(lst));
 	if (map == NULL)
 		return (cleanup(lst, NULL));
-	if (populate_map(map, lst, max) == NULL)
-		return (cleanup(lst, map));
+	if (populate_map(map, lst, max) == NULL ||
+			is_full_map(map) || !is_enclosed_map(map))
+		return (NULL);
 	return (map);
 }

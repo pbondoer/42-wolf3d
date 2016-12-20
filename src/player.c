@@ -6,7 +6,7 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/16 01:08:58 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/20 14:14:37 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/20 15:19:19 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ static void	place_player(t_player *p, t_map *m)
 			break ;
 		y++;
 	}
-	if (y == m->height && x == m->width)
-		ft_putendl("warning: map contains no empty space");
 	p->x = x + 0.5f;
 	p->y = y + 0.5f;
 }

@@ -6,7 +6,7 @@
 #    By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/22 23:12:10 by pbondoer          #+#    #+#              #
-#    Updated: 2016/12/20 05:39:23 by pbondoer         ###   ########.fr        #
+#    Updated: 2016/12/20 16:24:50 by pbondoer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ SRC		= main.c \
 		  map.c \
 		  render.c \
 		  ray.c \
-		  texture.c
+		  texture.c \
+		  minimap.c
 
 OBJ		= $(addprefix $(OBJDIR)/,$(SRC:.c=.o))
 

@@ -6,7 +6,7 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/12 10:44:47 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/20 11:40:50 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/20 16:24:02 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,6 @@ void			render(t_mlx *mlx)
 		draw_column(mlx, &ray, x);
 		x++;
 	}
+	draw_minimap(mlx);
 	mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->image->image, 0, 0);
 }

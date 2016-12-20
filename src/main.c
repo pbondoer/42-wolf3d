@@ -6,7 +6,7 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/12 08:28:17 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/20 14:02:38 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/20 15:32:37 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 static int	die(char *reason)
 {
 	ft_putendl(reason);
+	exit(EXIT_FAILURE);
 	return (1);
 }
 
@@ -34,7 +35,7 @@ int			main(int argc, char **argv)
 	t_map		*map;
 
 	if (argc < 2)
-		return (die("error: not enough arguments"));
+		return (die("error: not enough arguments\nusage: ./wolf3d [mapfile]"));
 	if ((mlx = init()) == NULL)
 		return (die("error: mlx couldn't initialize properly"));
 	if (load_textures(mlx))

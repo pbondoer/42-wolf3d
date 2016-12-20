@@ -6,7 +6,7 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/12 08:35:18 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/20 14:01:10 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/20 16:24:29 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,8 +130,11 @@ t_color				clerp(t_color c1, t_color c2, double p);
 void				init_player(t_player *p, t_map *m);
 t_map				*read_map(char *fd, int max);
 int					get_tile(t_map *m, int x, int y);
+int					is_full_map(t_map *m);
+int					is_enclosed_map(t_map *m);
 void				cast(t_ray *r, t_map *m, t_player *p, t_image *tex[]);
 void				rotate_player(t_player *p, float angle);
 void				move_player(t_player *p, t_map *m, float distance);
 int					load_textures(t_mlx *mlx);
+void				draw_minimap(t_mlx *mlx);
 #endif

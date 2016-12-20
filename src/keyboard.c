@@ -6,7 +6,7 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/12 05:33:43 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/20 03:18:19 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/20 16:10:54 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int		hook_keydown(int key, t_mlx *mlx)
 	if (key == K_ESC)
 		exit(EXIT_SUCCESS);
 	if (key == K_LEFT)
-		rotate_player(&mlx->player, 2.0f / 180.0f * M_PI);
-	if (key == K_RIGHT)
 		rotate_player(&mlx->player, -2.0f / 180.0f * M_PI);
+	if (key == K_RIGHT)
+		rotate_player(&mlx->player, 2.0f / 180.0f * M_PI);
 	if (key == K_UP)
 		move_player(&mlx->player, mlx->map, 0.05f);
 	if (key == K_DOWN)
