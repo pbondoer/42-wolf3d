@@ -6,7 +6,7 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/16 01:08:58 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/20 03:17:44 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/20 07:07:24 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void		init_player(t_player *p)
 	p->d.x = -1.0f;
 	p->d.y = 0.0f;
 	p->p.x = 0.0f;
-	p->p.y = 2.0 / 3.0f;
+	p->p.y = 2.0f / 3.0f;
 }
 
 static void	rotate(t_vector *v, float angle)

@@ -6,7 +6,7 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/12 08:35:18 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/20 05:38:07 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/20 06:47:01 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,12 @@ typedef struct		s_ray
 {
 	float		x;
 	float		y;
-	float		dirx;
-	float		diry;
 	int			side;
 	float		distance;
 	float		light;
 	int			height;
+	t_image		*texture;
+	int			texpos;
 }					t_ray;
 
 typedef struct		s_player
@@ -101,6 +101,7 @@ t_image				*new_image(t_mlx *mlx, int w, int h);
 t_image				*xpm_image(char *xpm, t_mlx *mlx);
 void				clear_image(t_image *img);
 void				image_set_pixel(t_image *image, int x, int y, int color);
+t_color				get_pixel(t_image *image, int x, int y);
 t_color				clerp(t_color c1, t_color c2, double p);
 
 /*
@@ -110,7 +111,7 @@ t_color				clerp(t_color c1, t_color c2, double p);
 void				init_player(t_player *p);
 t_map				*read_map(char *fd);
 int					get_tile(t_map *m, int x, int y);
-void				cast(t_ray *r, t_map *m, t_player *p);
+void				cast(t_ray *r, t_map *m, t_player *p, t_image *tex[]);
 void				rotate_player(t_player *p, float angle);
 void				move_player(t_player *p, t_map *m, float distance);
 int					load_textures(t_mlx *mlx);

@@ -2,6 +2,7 @@
 static char *_z63a_fwq0i[] = {
 /* columns rows colors chars-per-pixel */
 "32 32 76 1 ",
+pen:q
 "  c #280C0C",
 ". c #2A0C0C",
 "X c #2B0D0D",

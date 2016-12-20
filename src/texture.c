@@ -6,14 +6,13 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/20 04:19:00 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/20 05:07:07 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/20 06:52:43 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
 #include "wolf.h"
 #include <stddef.h>
-#include <stdio.h>
 
 void	free_textures(t_mlx *mlx)
 {
@@ -27,7 +26,8 @@ void	free_textures(t_mlx *mlx)
 int		load_textures(t_mlx *mlx)
 {
 	static char	*map[TEX_MAP_SIZE] = { "textures/brick.xpm",
-		"textures/wood.xpm", "textures/metal.xpm", "textures/stone.xpm", NULL };
+		"textures/wood.xpm", "textures/metal.xpm", "textures/stone.xpm",
+		"textures/grass.xpm", NULL };
 	t_image		*img;
 	int			i;
 
