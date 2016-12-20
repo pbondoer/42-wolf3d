@@ -6,7 +6,7 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 21:49:22 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/20 13:17:50 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/20 13:49:44 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,11 @@ static void		*cleanup(t_list *lst, t_map *m)
 	{
 		if (m->values)
 			while (i < m->height)
-				if (m->values[i])
+			{
+				if (m->values + i)
 					ft_memdel((void **)(m->values + i));
+				i++;
+			}
 		ft_memdel((void **)&m);
 	}
 	return (NULL);
@@ -82,7 +85,7 @@ static t_map	*populate_map(t_map *m, t_list *list, int max)
 		{
 			if ((m->values[x][y] = ft_atoi(split[x])) < 0 ||
 					m->values[x][y] > max)
-				return (cleanup(list, m));
+				return (NULL);
 			x++;
 		}
 		ft_splitdel(&split);
@@ -132,7 +135,9 @@ t_map			*read_map(char *file, int max)
 			(lst = get_lines(fd)) == NULL)
 		return (NULL);
 	map = new_map(ft_countwords((char *)lst->content, ' '), ft_lstcount(lst));
-	if (map == NULL || populate_map(map, lst, max) == NULL)
+	if (map == NULL)
 		return (cleanup(lst, NULL));
+	if (populate_map(map, lst, max) == NULL)
+		return (cleanup(lst, map));
 	return (map);
 }

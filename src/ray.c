@@ -6,13 +6,12 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/16 01:21:04 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/20 13:09:39 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/20 13:50:15 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "wolf.h"
-#include <stdio.h>
 
 static void		castfloor(t_ray *r, t_cast *t)
 {
