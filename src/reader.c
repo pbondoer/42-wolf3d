@@ -6,7 +6,7 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 21:49:22 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/20 13:08:15 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/20 13:17:50 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ static t_map	*populate_map(t_map *m, t_list *list, int max)
 			return (cleanup(list, m));
 		while (x < m->width)
 		{
-			m->values[x][y] = ft_atoi(split[x]);
 			if ((m->values[x][y] = ft_atoi(split[x])) < 0 ||
 					m->values[x][y] > max)
 				return (cleanup(list, m));
