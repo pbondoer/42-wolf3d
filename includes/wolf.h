@@ -6,7 +6,7 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/12 08:35:18 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/20 13:01:31 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/20 13:10:45 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,11 +102,12 @@ typedef struct		s_mlx
 	t_map		*map;
 	t_player	player;
 	t_image		*tex[TEX_MAP_SIZE];
+	int			max_tex;
 	t_image		*floor;
 	t_image		*ceiling;
 }					t_mlx;
 
-t_mlx				*init();
+t_mlx				*init(void);
 t_mlx				*del_mlx(t_mlx *mlx);
 void				render(t_mlx *mlx);
 int					hook_mousedown(int button, int x, int y, t_mlx *mlx);
@@ -127,7 +128,7 @@ t_color				clerp(t_color c1, t_color c2, double p);
 */
 
 void				init_player(t_player *p);
-t_map				*read_map(char *fd);
+t_map				*read_map(char *fd, int max);
 int					get_tile(t_map *m, int x, int y);
 void				cast(t_ray *r, t_map *m, t_player *p, t_image *tex[]);
 void				rotate_player(t_player *p, float angle);

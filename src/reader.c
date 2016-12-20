@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   reader.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 21:49:22 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/19 20:53:05 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/20 13:08:15 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static t_list	*get_lines(int fd)
 	return (lst);
 }
 
-static t_map	*populate_map(t_map *m, t_list *list)
+static t_map	*populate_map(t_map *m, t_list *list, int max)
 {
 	t_list	*lst;
 	char	**split;
@@ -81,6 +81,9 @@ static t_map	*populate_map(t_map *m, t_list *list)
 		while (x < m->width)
 		{
 			m->values[x][y] = ft_atoi(split[x]);
+			if ((m->values[x][y] = ft_atoi(split[x])) < 0 ||
+					m->values[x][y] > max)
+				return (cleanup(list, m));
 			x++;
 		}
 		ft_splitdel(&split);
@@ -120,7 +123,7 @@ static t_map	*new_map(int w, int h)
 	return (m);
 }
 
-t_map			*read_map(char *file)
+t_map			*read_map(char *file, int max)
 {
 	t_list	*lst;
 	t_map	*map;
@@ -130,7 +133,7 @@ t_map			*read_map(char *file)
 			(lst = get_lines(fd)) == NULL)
 		return (NULL);
 	map = new_map(ft_countwords((char *)lst->content, ' '), ft_lstcount(lst));
-	if (map == NULL || populate_map(map, lst) == NULL)
+	if (map == NULL || populate_map(map, lst, max) == NULL)
 		return (cleanup(lst, NULL));
 	return (map);
 }

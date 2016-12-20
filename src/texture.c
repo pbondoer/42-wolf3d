@@ -6,7 +6,7 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/20 04:19:00 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/20 10:40:57 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/20 13:10:03 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "libft.h"
 #include <stddef.h>
 
-void	free_textures(t_mlx *mlx)
+static void	free_textures(t_mlx *mlx)
 {
 	int i;
 
@@ -24,7 +24,7 @@ void	free_textures(t_mlx *mlx)
 		del_image(mlx, mlx->tex[i++]);
 }
 
-int		load_textures(t_mlx *mlx)
+int			load_textures(t_mlx *mlx)
 {
 	static char	*map[TEX_MAP_SIZE] = { "brick.xpm", "wood.xpm", "metal.xpm",
 		"stone.xpm", "grass.xpm", NULL };
@@ -46,6 +46,7 @@ int		load_textures(t_mlx *mlx)
 		mlx->tex[i] = img;
 		i++;
 	}
+	mlx->max_tex = i - 1;
 	mlx->tex[0] = NULL;
 	mlx->floor = mlx->tex[2];
 	mlx->ceiling = mlx->tex[4];
