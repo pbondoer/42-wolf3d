@@ -6,7 +6,7 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/20 03:11:00 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/20 16:05:50 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/20 17:04:30 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int		is_enclosed_map(t_map *m)
 		x = 0;
 		while (x < m->width)
 		{
-			if ((x == 0 || y == 0 || x == m->width - 1 || y == m->height) && 
+			if ((x == 0 || y == 0 || x == m->width - 1 || y == m->height) &&
 					get_tile(m, x, y) == 0)
 				return (0);
 			x++;
