@@ -2,8 +2,6 @@
 
 ![wolf3d screenshot](/screens/screen1.png?raw=true)
 
-![wolf3d screenshot](/screens/screen2.png?raw=true)
-
 A Wolfeinstein-like renderer made in C using minilibX, with textures, basic
 lighting and basic map files.
 
